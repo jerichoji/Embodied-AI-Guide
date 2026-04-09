@@ -1,142 +1,120 @@
 ![](./files/Embodied-AI-Guide-logo.png)
 
-<h1 align="center">具身智能技术指南 Embodied-AI-Guide</h1>
+<h1 align="center">CPS Lab Embodied AI 入门指南</h1>
 
-> 📚 国内最热门的具身智能技术指南，一个偏「百科全书」定位的具身智能中文知识库与资料索引。欢迎 **Star / 分享 / 提 PR**，欢迎邮件联系 <a href="mailto:lumina.embodiedai@gmail.com">lumina.embodiedai@gmail.com</a> 或 [项目发起人](https://tianxingchen.github.io/) 微信 <code>TianxingChen_2002</code>（请备注机构+姓名与来意）。  
+> 面向 CPS Lab 成员的具身智能入门资料。目标不是做“资讯汇总”，而是帮助新同学在较短时间内建立问题框架、了解技术栈，并找到合适的上手路径。  
 
-### 📢 News｜项目进展
-
-📷 *2026-01-15: Embodied-AI-Guide重组织完成*<br>
-⭐️ *2025-12-18: GitHub Stars 突破 10,000*<br>
-❤️ *2025-03-15: Embodied-AI-Guide正式开源*
-
-<img src="https://img.shields.io/github/stars/TianxingChen/Embodied-AI-Guide?style=flat-square" alt="GitHub repo stars" height="20"/> <img src="https://api.visitorbadge.io/api/visitors?path=https%3A%2F%2Fgithub.com%2FTianxingChen%2FEmbodied-AI-Guide&label=Total%20Visitors&labelColor=%232ccce4&countColor=%23d9e3f0" alt="Visitors" height="20"/>
-
-### 🧑‍💻 Related Open-source Projects｜相关开源项目
-
-⭐️ Lumina Call (具身智能照片): [Website](https://lumina-embodied.ai/lumina-call)<br>
-⭐️ Datawhale Easy-Embodied: [Repo](https://github.com/datawhalechina/every-embodied)
-
-## 🦉 Lumina具身智能社区: [点击访问](https://lumina-embodied.ai)
-
-**扫描右下图加入`Lumina具身智能`社区**:
-
-<img src="./files/images/Lumina.png" alt="Task Descriptions">
-
-## 🐣 (1) Start From Here - 从这里开始
+## 🐣 (1) Start Here - 从这里开始
 
 > 具身智能是指一种基于物理实体进行感知和行动的智能系统, 其通过智能体与环境的交互获取信息、理解问题、做出决策并实现行动, 从而产生智能行为和适应性。
 
-### (1.1) How - 如何使用这份指南
+### (1.1) 如何使用这份指南
 
-我们希望的是帮助新人快速建立领域认知, 所以设计理念是：**简要**以一个实践项目带大家动手学习具身智能，同时以**百科全书形式**介绍目前具身智能涉及到的主要技术, 让大家知道不同的技术能够解决什么问题, 未来想要深入发展的时候能够有头绪。
+建议按下面顺序阅读：
 
-### (1.2) About us - 关于我们
-我们是一个由具身初学者组成的团队, 希望能够通过我们自己的学习经验, 为后来者提供一些帮助, 加快具身智能的普及。欢迎更多朋友加入我们的项目, 也很欢迎交友、学术合作, 有任何问题, 可以联系邮箱`chentianxing2002@gmail.com`。
+1. 先看一遍本页，建立对具身智能整体问题的基本认识。
+2. 再按自己的方向阅读后续章节：算法、基础设施、控制、硬件。
+3. 阅读时优先回答三个问题：任务是什么、输入输出是什么、系统瓶颈在哪里。
+4. 最后结合一个小型实践任务，把数据、模型、评测和系统约束串起来理解。
 
-<a href="https://github.com/TianxingChen/Embodied-AI-Guide/graphs/contributors">
-  <img src="https://contrib.rocks/image?repo=TianxingChen/Embodied-AI-Guide" />
-</a>
+### (1.2) 阅读目标
+
+完成本指南后，至少应当能够回答这些问题：
+
+- 具身智能和纯视觉、多模态模型、传统机器人分别是什么关系。
+- 一个具身系统通常由哪些模块组成，模块之间如何耦合。
+- 数据、仿真、策略学习、控制、评测分别解决什么问题。
+- 自己更适合从算法、系统、仿真还是真机侧切入。
 
 <section id="robotwin"></section>
 
-## ⚒️ (2) 动手学习具身智能操作
+## ⚒️ (2) 实践建议
 
-> **建议一周内完成学习**，使用**RoboTwin 2.0**平台走通一个操作策略“生命周期”的全流程<br>
-> **完成此教程需要至少16GB显存的显卡**
+这一部分不再绑定某一个特定平台。对入门者来说，更重要的是通过一个小任务理解完整闭环，而不是记住某个项目的使用细节。
 
-### (2.1) 为什么这样选择这个教程
+### (2.1) 一个最小闭环应该包含什么
 
-具身智能操作是一个很复杂的问题：**数据从哪来**、**策略怎么设计（架构与训练细节）**、**怎么评测模型性能（平台与任务设计）**。
+建议至少走通下面四步：
 
-**数据从哪来**：具身智能的数据有很多种源头，比如真机数据采集、人类视频数据、仿真合成数据、世界模型合成数据等等，其中各有各的问题，比如真机数据采集成本高、人类视频数据信息含量低、仿真合成数据Sim2Real Gap与Scaleup难题、世界模型合成数据存在幻觉等。
+- 定义任务：明确场景、动作空间、观测、成功判据。
+- 准备数据：可以是真机数据、仿真数据，或公开数据集子集。
+- 训练或复现一个基线策略：先保证能跑通，再谈提升。
+- 做评测与复盘：看成功率、失败模式、泛化性和系统瓶颈。
 
-**策略怎么设计**：不同的网络架构选择影响模型的表现、收敛效果、推理速度等。
+### (2.2) 建议的入门标准
 
-**怎么评测模型性能**：评测是非常重要的，否则我们不知道科学评价模型效果如何，也没办法推动技术发展。
+如果你能完成以下事情，说明已经具备继续深入的基础：
 
-面对以上问题，<a href="https://robotwin-platform.github.io/">RoboTwin 2.0平台</a>为广大科研学者提供了非常好的学习平台，RoboTwin 2.0基于易配置的<a href="https://sapien.ucsd.edu/">SAPIEN</a>仿真平台开发，提供了50个双臂自动化数据合成、主流操作策略训测集成、评测系统，能够辅助大家快速走起来具身智能操作策略的生命周期。过程中也可以多看看数据与评测视频，了解数据分布与策略表现。
+- 能解释一个 manipulation 或 navigation 任务的输入输出定义。
+- 能独立跑通一个公开基线或复现论文中的核心实验。
+- 能从失败案例中区分是感知问题、策略问题还是控制/执行问题。
+- 能读懂一篇具身论文中的任务设定、训练数据来源与评测方式。
 
-### (2.2) 学习流程
+### (2.3) 选题时优先关注什么
 
-RoboTwin 2.0：[代码](https://github.com/robotwin-Platform/robotwin) ｜ [主页](https://robotwin-platform.github.io/) ｜ [文档](https://robotwin-platform.github.io/doc/) ｜ [论文](https://arxiv.org/abs/2506.18088)
-
-<details>
-<summary><b>展开学习流程</b></summary>
-
-#### (2.2.1) 了解RoboTwin 2.0做了什么 (～1天)
-
-阅读RoboTwin 2.0论文[paper](https://arxiv.org/pdf/2506.18088)，了解仿真数据合成的方案，深入理解对于合成一条机器人数据需要什么信息，机器人有什么可以做的任务，了解[Aloha](https://www.bilibili.com/video/BV1vU421d7BJ/?spm_id_from=333.337.search-card.all.click&vd_source=ab9cf5374617c2867aaea34af29b53c9)硬件。
-
-#### (2.2.2) 配置RoboTwin 2.0平台，数据采集 (~0.5天)
-
-环境安装教学: [Tutorial](https://robotwin-platform.github.io/doc/usage/robotwin-install.html)，根据以下数据采集脚本采集`beat_block_hammer`任务50条:
-
-```
-bash collect_data.sh ${task_name} ${task_config} ${gpu_id}
-## Clean Data Example: bash collect_data.sh beat_block_hammer demo_clean 0
-## Radomized Data Example: bash collect_data.sh beat_block_hammer demo_randomized 0
-```
-
-#### (2.2.4) 策略训练（～1天）
-
-选择ACT策略进行复现 [Tutorial](https://robotwin-platform.github.io/doc/usage/ACT.html)，ACT是非常经典的操作策略算法，训练此策略大约需要12GB显存，
-
-#### (2.2.5) 测试策略（～1天）
-
-在`demo_clean`下评测ACT成功率大约是56%（详见[Leaderboard](https://robotwin-platform.github.io/leaderboard)）。
-
-</details>
+- 问题是否清晰：任务边界要明确，别一开始就追求“大而全”。
+- 资源是否匹配：算力、设备、数据和时间要与题目规模匹配。
+- 评测是否可信：没有可靠评测，结果就很难解释。
+- 扩展性是否存在：题目最好能自然延伸到下一阶段研究。
 
 <section id="info"></section>
 
-## 📄 (3) Useful Info - 有利于搭建认知的资料
+## 💻 (3) 编程基础要求
 
-这一章主要用于**快速建立对具身智能领域的整体认知**，适合在系统学习算法、工程或硬件之前，用来了解技术版图、社区生态与研究脉络。
+具身智能不是纯论文阅读型方向。即使研究重点在算法，也会持续遇到环境配置、远程开发、训练脚本调试、日志排查、数据清洗和实验复现等工程问题。下面这些基础能力默认应当尽快补齐。
+
+### (3.1) 基础工程能力
+
+除了 Linux / SSH / Git / ROS / ROS 2 这些基础设施能力，入门阶段也建议尽快建立基本的 AI 辅助编程能力，用它来加速阅读、修改、调试和验证，但不要把工程判断外包给模型。
+
+Linux / SSH / Git / ROS / ROS 2 / Vibe Coding 的系统化内容已经整理到：
+
+- [Engineering Basics - Linux / SSH / Git / ROS / ROS 2 / Vibe Coding 基础](./topics/infrastructure.md#engineering-basics)
+
+至少需要具备以下习惯：
+
+- 能把任务拆成明确的小步骤，而不是一次性给出模糊大需求
+- 能让模型先解释代码结构、调用链和关键模块，再要求修改
+- 能要求模型给出具体改动点、潜在风险和验证方式
+- 能在采纳代码前自己阅读 diff，而不是直接相信生成结果
+- 能结合日志、报错和实验结果继续追问，而不是只贴一句“运行失败”
+
+建议达到的标准：
+
+- 能借助 AI 工具快速定位仓库入口、训练脚本、配置项和数据流。
+- 能让 AI 协助写辅助脚本、排查报错、补实验记录，但不把研究判断外包给它。
+- 能在使用 AI 产出代码后自行完成运行验证、结果检查和必要重构。
+
+### (3.2) 为什么这些基础很重要
+
+- 没有 Linux 基础，很多时间会浪费在环境问题上，而不是研究问题上。
+- 没有 SSH 基础，几乎无法高效使用实验室算力资源。
+- 没有 Git 基础，代码协作、实验管理和结果回溯会很混乱。
+- 不理解 ROS / ROS 2，后续接仿真器、传感器和机器人系统时会比较吃力。
+- 没有基本的 AI 辅助编程能力，阅读和迭代速度会明显落后。
+
+如果以上三部分还不熟，建议先集中补一周到两周，把这些能力补到“能独立完成一次远程实验”的程度，再深入后面的研究内容。
+
+## 📄 (4) Useful Info - 有利于搭建认知的资料
+
+这一章只保留少量适合入门阶段反复使用的基础资料，不再罗列大规模社区、公众号或泛推荐清单。
 
 ---
 
-**方向性与方法论资料**  
-- 具身智能基础技术路线（Yunlong Dong）：[PDF](./files/具身智能基础技术路线-YunlongDong.pdf) ｜ [bilibili](https://www.bilibili.com/video/BV1d5ukedEsi)  
-- 斯坦福机器人学导论：[website](https://www.bilibili.com/video/BV17T421k78T)  
-- Cyber Nachos（偏系统与工程思维）：[website](https://cybernachos.github.io/)  
+**入门材料**  
+- 具身智能基础技术路线（Yunlong Dong）：[PDF](./files/具身智能基础技术路线-YunlongDong.pdf) ｜ [bilibili](https://www.bilibili.com/video/BV1d5ukedEsi)
+- 斯坦福机器人学导论：[website](https://www.bilibili.com/video/BV17T421k78T)
+- Cyber Nachos（偏系统与工程思维）：[website](https://cybernachos.github.io/)
 
-**社区 / 社交媒体（长期跟进价值高）**  
-- 公众号：**石麻日记（强烈推荐）**、Lumina具身智能、机器之心、新智元、量子位、具身智能研究室、具身纪元、Human Five、Xbot具身知识库、具身智能之心、自动驾驶之心、3D视觉工坊、将门创投、RLCN强化学习研究、CVHub  
-- 博主（小红书）：WhynotTV、穆尧_YaoMarkMu、许华哲Harry、周博宇、高飞、李弘扬、朱政、丁琰、YY硕、Mango-Man、RHOSLab #PI-李永露、正合时宜、心言任永亮、York Yang-Dyna Robotics、哲伦班长
-
-**实验室与学术生态参考**  
-- Robotics 实验室总结：[zhihu link1](https://zhuanlan.zhihu.com/p/682671294?utm_psn=1782122763157188608) ｜ [zhihu link2](https://zhuanlan.zhihu.com/p/682692024?utm_psn=1782122945184796672)  
-- 具身智能华人高引榜：[repo](https://github.com/Will-Gao/Embodied_Intelligence)  
-- Lumina 具身智能社区：[website](https://lumina-embodied.ai)  
-
-**高质量会议与期刊（论文检索时重点关注）**  
+**论文检索时重点关注的会议与期刊**  
 Science Robotics, TRO, IJRR, JFR, RSS, RAL, IROS, ICRA, ICCV, ECCV, ICML, CVPR, NeurIPS, CoRL, ICLR, AAAI, ACL
 
-**长期跟进研究进展与选题调研**
- 
-- Awesome Humanoid Robot Learning（Yanjie Ze）：[repo](https://github.com/YanjieZe/awesome-humanoid-robot-learning)  
-- Paper Reading List（DeepTimber Community）：[repo](https://github.com/DeepTimber-Robot-Lab/Paper-Reading-List)  
-- Paper List（Yanjie Ze）：[repo](https://github.com/YanjieZe/Paper-List)  
-- RoboScholar / Embodied AI Paper List（Tianxing Chen）：[repo](https://github.com/TianxingChen/Paper-List-For-EmbodiedAI)  
-- SOTA Paper Rating（Weiyang Jin）：[website](https://waynejin0918.github.io/SOTA-paper-rating.io/)  
-- Awesome LLM Robotics：[repo](https://github.com/GT-RIPL/Awesome-LLM-Robotics)  
-- Awesome Video Robotic Papers：[repo](https://github.com/H-Freax/Awesome-Video-Robotic-Papers)  
-- Awesome Embodied Robotics and Agent：[repo](https://github.com/zchoi/Awesome-Embodied-Robotics-and-Agent)  
-- awesome-embodied-vla / va / vln：[repo](https://github.com/jonyzhang2023/awesome-embodied-vla-va-vln)  
-- Awesome Affordance Learning：[repo](https://github.com/hq-King/Awesome-Affordance-Learning)  
-- Embodied AI Paper TopConf：[repo](https://github.com/Songwxuan/Embodied-AI-Paper-TopConf)  
-- Awesome **RL-VLA** for Robotic Manipulation (Haoyuan Deng)：[repo](https://github.com/Denghaoyuan123/Awesome-RL-VLA) 
-- Awesome **Efficient-VLA** for Robotic Manipulation (Weifan Guan)：[repo](https://github.com/guanweifan/awesome-efficient-vla) 
+**使用建议**  
+- 入门阶段先抓主线，不要把时间消耗在大规模“资料收藏”上。
+- 每读一篇论文，都尽量回答任务、观测、动作、数据、训练、评测六个问题。
+- 每个方向先找 2 到 3 篇代表工作建立坐标系，再往最新工作扩展。
 
-**年度趋势总结**  
-- State of Robot Learning (Dec 2025)：[website](https://vedder.io/misc/state_of_robot_learning_dec_2025.html)
-
-- 许华哲 - 具身智能：2025回望，[website](https://zhuanlan.zhihu.com/p/1983661736180589668)
-
-- 林天威 - 具身VLA的2025：从 Demo 到通用的距离，[website](https://zhuanlan.zhihu.com/p/1989799567177307432)
-
-## 🍎 (4) Algorithm - 算法篇
+## 🍎 (5) Algorithm - 算法篇
 
 这一篇把具身智能中最常用的“算法能力栈”从下往上串了起来：底层是工程工具与几何/标定/控制这类决定系统能否稳定运行的基础；中层是视觉与多模态表征（2D/3D/4D、prompting、affordance），它们把复杂世界压缩成可泛化、可对齐、可被策略利用的中间表示；上层则是学习与决策（RL/IL、VLA、LLM+Planner、快慢系统），把感知与任务目标转成可执行动作，并逐步走向更长程、更通用、更可部署的系统形态。
 
@@ -161,15 +139,16 @@ Science Robotics, TRO, IJRR, JFR, RSS, RAL, IROS, ICRA, ICCV, ECCV, ICML, CVPR, 
   - [10.3 Autonomous Driving](./topics/algorithm.md#ad)
 
 
-## 🏋️‍♂️ (5) Infrastruture - 软件基础设施篇
+## 🏋️‍♂️ (6) Infrastruture - 软件基础设施篇
 
 这一章关注的不是“具体某个模型”，而是**支撑具身智能研究与系统落地的软件基础设施（Infrastructure）**。仿真器决定你能构建怎样的世界，基准集决定你如何比较方法优劣，数据集决定模型最终学到什么样的行为分布。它们共同构成了具身智能中**最容易被忽视、但最影响上限与复现性的部分**。
 
+- [(0) Engineering Basics - Linux / SSH / Git / ROS / ROS 2 / Codex 基础](./topics/infrastructure.md#engineering-basics)
 - [(1) Simulators - 仿真器](./topics/infrastructure.md#simulators)
 - [(2) Benchmarks - 基准集](./topics/infrastructure.md#benchmarks)
 - [(3) Datasets - 数据集](./topics/infrastructure.md#datasets)
 
-## 🎮 (6) Control - 控制篇
+## 🎮 (7) Control - 控制篇
 
 这一章并不是为了让你“立刻跑一个模型”，而是为具身智能系统提供**稳定性、可解释性与工程底座**。控制论保证系统在高频下不崩溃，机器人学提供几何与动力学约束，SLAM 与状态估计让机器人“知道自己在哪里”，ROS 与工程库则把理论变成可复现的系统。
 
@@ -185,7 +164,7 @@ Science Robotics, TRO, IJRR, JFR, RSS, RAL, IROS, ICRA, ICCV, ECCV, ICML, CVPR, 
   - [(3.3) 里程计与 SLAM](./topics/control.md#slam)
   - [(3.4) 工程生态与工具](./topics/control.md#engineering-stack)
 
-## 🦾 (7) Hardware - 硬件篇
+## 🦾 (8) Hardware - 硬件篇
 
 具身智能硬件涵盖多个技术栈：嵌入式软硬件、机械设计、机器人系统集成与传感器等。它们知识面很杂，但共同目标只有一个：把“算法”变成真实世界里稳定可复现的系统。关于硬件学习，最有效的方式几乎永远是 **从实践出发**：先做出一个能跑起来的最小系统，再逐步扩展复杂度与可靠性。
 
@@ -203,21 +182,6 @@ Science Robotics, TRO, IJRR, JFR, RSS, RAL, IROS, ICRA, ICCV, ECCV, ICML, CVPR, 
 - [(7) Companies —— 公司与硬件生态](./topics/hardware.md#companies)
 
 
-<section id="acknowledgement"></section>
-
-## 👍 Citation - 引用
-If you find this repository helpful, please consider citing:
-
-```
-@misc{embodiedaiguide2025,
-  title = {Embodied-AI-Guide},
-  author = {Embodied-AI-Guide-Contributors, Lumina-Embodied-AI-Community, Tianxing Chen},
-  month = {January},
-  year = {2025},
-  url = {https://github.com/tianxingchen/Embodied-AI-Guide},
-}
-```
-
 <section id="license"></section>
 
 ## 🏷️ License - 许可协议
@@ -226,20 +190,6 @@ If you find this repository helpful, please consider citing:
 
 - 允许：个人学习、学术研究、非盈利使用；
 - 禁止：任何形式的商业使用，包括但不限于公司/企业内部使用、
-  集成到收费产品或服务中、或用于任何营利目的。
+ 集成到收费产品或服务中、或用于任何营利目的。
 
 详情请查看仓库中的 [LICENSE](./LICENSE) 文件。
-
-如需商业授权（例如在公司产品或商业项目中使用），请联系项目负责人：<a href="mailto:chentianxing2002@gmail.com">chentianxing2002@gmail.com</a>。
-
-<section id="star-history"></section>
-
-## ⭐️ Star History - Star历史
-
-[![Star History Chart](https://api.star-history.com/svg?repos=TianxingChen/Embodied-AI-Guide&type=Date)](https://star-history.com/#TianxingChen/Embodied-AI-Guide&Date)
-
-## 🤝 Sponsors - 支持机构
-
-感谢 **无界智航、超维动力、香港大学MMLab、地瓜机器人、松灵机器人** 对本项目的支持
-
-![](./files/images/sponsor.png)
