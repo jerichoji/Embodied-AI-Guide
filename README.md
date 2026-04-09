@@ -184,12 +184,8 @@ Science Robotics, TRO, IJRR, JFR, RSS, RAL, IROS, ICRA, ICCV, ECCV, ICML, CVPR, 
 
 <section id="license"></section>
 
-## 🏷️ License - 许可协议
+## 🏷️ Credits - 致谢与来源
 
-本项目为 **非商业使用（Non-Commercial Use）** 协议：
+本项目基于 [TianxingChen/Embodied-AI-Guide](https://github.com/TianxingChen/Embodied-AI-Guide) 进一步整理和改写，用于 CPS Lab 内部的具身智能入门导读。
 
-- 允许：个人学习、学术研究、非盈利使用；
-- 禁止：任何形式的商业使用，包括但不限于公司/企业内部使用、
- 集成到收费产品或服务中、或用于任何营利目的。
-
-详情请查看仓库中的 [LICENSE](./LICENSE) 文件。
+感谢原项目作者与贡献者的开源整理工作，为这份文档提供了很好的基础。
