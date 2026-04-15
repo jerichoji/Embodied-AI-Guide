@@ -115,7 +115,7 @@ python gear_sonic/scripts/pico_manager_thread_server.py --manager
 <section id="PICO"></section>
 
 ## 🎮 (5) PICO 端设置
-> 如有疑问请参考 [PICO 官方文档]([https://nvlabs.github.io/GR00T-WholeBodyControl/getting_started/vr_teleop_setup.html) 或联系维护者。
+> 如有疑问请参考 [PICO 官方文档](https://nvlabs.github.io/GR00T-WholeBodyControl/getting_started/vr_teleop_setup.html) 或者联系维护者。
 
 ### (5.1) 连接PICO到局域网 （默认已经连接）
 1. 打开PICO，进入设置界面。
