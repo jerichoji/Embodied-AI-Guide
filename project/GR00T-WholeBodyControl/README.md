@@ -49,7 +49,7 @@
 
 ### (3.1) 前置检查
 
-1. 给机器人上电
+1. **给机器人上电**
 2. 检查是否与机器人处于同一网络
 可以使用 `ping <robot_ip>` 来确认网络连接。
 ```bash
@@ -98,7 +98,7 @@ bash /opt/apps/roboticsservice/runService.sh
 cd /home/unitree/workspace/sonic/GR00T-WholeBodyControl/gear_sonic_deploy
 bash deploy.sh --input-type zmq_manager real
 ```
-> 输入密码后，等到终端出现 `Init done` 的提示后。
+> 输入密码后，听到机器人播报 "调试模式" 的语音并等待终端出现现 `Init done` 的提示后，即表示 GR00T-WholeBodyControl 已经成功启动并进入待命状态。
 
 > `--input-type zmq_manager` 表示使用 ZMQ Manager 作为输入源，`real` 表示在真机上运行。
 
