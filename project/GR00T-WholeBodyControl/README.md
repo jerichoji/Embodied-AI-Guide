@@ -36,7 +36,7 @@
 | 项目 | 内容 |
 |---|---|
 | 机器人名称 | `Unitree_G1a/b` |
-| 机器人 IP | `192.168.123.164(Unitree_G1a)`, `192.168.1.112(Unitree_G1b)` |
+| 机器人 IP | `192.168.1.137(Unitree_G1a)`, `192.168.1.112(Unitree_G1b)` |
 | SSH 用户名 | `unitree` |
 | SSH 端口 | `22` |
 | 项目目录 | `/home/unitree/workspace/sonic` |
@@ -53,7 +53,7 @@
 2. 检查是否与机器人处于同一网络
 可以使用 `ping <robot_ip>` 来确认网络连接。
 ```bash
-ping 192.168.123.164 
+ping 192.168.1.137 # 此处以G1a为例，请确认连接到正确的机器人IP地址
 ``` 
 如果成功，会看到类似下面的输出:
 
@@ -78,7 +78,7 @@ ssh <username>@<robot_ip>
 例如：
 
 ```bash
-ssh unitree@192.168.123.164
+ssh unitree@192.168.1.137
 ```
 >如果是第一次连接，可能会提示是否信任该主机，输入 `yes` 并回车即可。
 
@@ -129,7 +129,7 @@ python gear_sonic/scripts/pico_manager_thread_server.py --manager
 ### (5.3) 启动PICO Teleop Client
 1. 打开PICO资源库，选择未知来源
 2. 点击 xrobotoolkit 启动远程控制界面
-3. 在PC service下输入机器人IP地址（例如：192.168.123.164）
+3. 在PC service下输入机器人IP地址（例如：192.168.1.137）
 4. 勾选`Head`， `Controller`，PICO Motion Tracker下`mode`选择 `Full-body`
 5. Data & Control下，勾选`Send`
 6. 点击connect，等待连接成功提示，status显示working即可。
